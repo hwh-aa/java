@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <base th:href="|${#request.getContextPath()}/|">
+    <meta charset="UTF-8">
+    <title>班级查询</title>
+    <link rel="stylesheet" href="article/css/allcss.css"/>
+    <script src="article/js/alljs.js"></script>
+</head>
+<body>
+    <h3>班级查询</h3>
+    <a href="article/clatoadd">去新加</a>
+    <div th:text="${msg}" th:if="${msg} != null"></div>
+    <button onclick="test()">click</button>
+    <table border="1" width="100%">
+        <tr>
+            <th>序号</th><th>班级编号</th><th>班级名</th><th>操作</th>
+        </tr>
+        <tr th:each="c,st:${list}">
+            <td th:text="${st.count}"></td>
+            <td th:text="${c.cid}"></td>
+            <td th:text="${c.cname}"></td>
+            <td>
+               <a th:href="|article/claget/${c.cid}|">详情</a>
+               <a th:href="|article/cladel/${c.cid}|" onclick="return confirm('你确定删除吗？')">删除</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

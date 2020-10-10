@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <base th:href="|${#request.getContextPath()}/|">
+    <meta charset="UTF-8">
+    <title>班级详情</title>
+</head>
+<body>
+    <h3>班级详情</h3>
+    <a href="article/clatoadd">去新加</a>
+    <a href="article/claquery">去查询</a>
+    <div th:text="${#request.getParameter('msg')}" th:if="${#request.getParameter('msg')} != null"></div>
+    <div th:text="${msg}" th:if="${msg} != null">
+    </div>
+    <form action="article/clamod" method="post">
+        <table>
+            <tr>
+                <td>班级编号:</td>
+                <td><input name="cid" th:value="${c.cid}" readonly></td>
+            </tr>
+            <tr>
+                <td>班级名称:</td>
+                <td><input name="cname" th:value="${c.cname}"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="修改">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
